@@ -5,7 +5,7 @@ from django.http import HttpResponse
 
 
 def blogHome(request):
-    return HttpResponse('Hello world BlogHome')
+    return render(request,'blog/blogHome.html')
 
 def blogPost(request,slug):
-    return HttpResponse(f'Hello world BlogPost {slug}')
+    return render(request,'blog/blogPost.html')
