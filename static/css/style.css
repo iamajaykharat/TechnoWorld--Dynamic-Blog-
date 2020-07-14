@@ -1,0 +1,60 @@
+#hero {
+  width: 100%;
+  height: 80vh;
+  background: url("/static/img/blog-bg.jpg") center center;
+  background-size: cover;
+  position: relative;
+  margin-top: -80px;
+  z-index: 9;
+}
+
+#hero .hero-container {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 0 15px;
+}
+
+#hero h1 {
+    margin: 150px 0px 0px 830px;
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 10px;
+    color: rgb(229, 174, 236);
+}
+
+#hero h2 {
+  color: rgb(162, 224, 243);
+  margin: 50px 0px 0px 830px;
+  line-height: 35px;
+  font-size: 24px;
+}
+@media (min-width: 1024px) {
+  #hero {
+    background-attachment: fixed;
+  }
+}
+
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  #hero h2 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+
+@media (max-width: 1024px) {
+  .why-us {
+    background-attachment: scroll;
+  }
+}

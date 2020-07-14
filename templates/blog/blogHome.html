@@ -1,8 +1,132 @@
 {% extends 'base.html' %}
 {% block title %} Blog {% endblock title %}
+{% block css %}
 
+.fa-satellite{
+  background: #3B5998;
+  color: white;
+}
+
+{% endblock css %}
 {% block body %}
+{% load static %}
+<section id="hero">
+    <div class="hero-container">
+      <h1>Welcome to Our Blog</h1>
+      <h2>We are here to provide you all the latest information related to Technology</h2>
+    </div>
+  </section><!-- #hero -->
 
-bloghome
+
+<!-- Blogpost start -->
+<div class="container my-2">
+<div class="row">
+<div class="col-md-8">
+
+        <h2 class="my-4">Page Heading
+          <small>Secondary Text</small>
+        </h2>
+
+        <!-- Blog Post -->
+        <div class="card mb-4 border">
+          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+          <div class="card-body">
+            <h2 class="card-title">Post Title</h2>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+            <a href="#" class="btn btn-primary">Read More →</a>
+          </div>
+          <div class="card-footer text-muted">
+            Posted on January 1, 2020 by
+            <a href="#">Start Bootstrap</a>
+          </div>
+        </div>
+
+        <!-- Blog Post -->
+        <div class="card mb-4 border">
+          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+          <div class="card-body">
+            <h2 class="card-title">Post Title</h2>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+            <a href="#" class="btn btn-primary">Read More →</a>
+          </div>
+          <div class="card-footer text-muted">
+            Posted on January 1, 2020 by
+            <a href="#">Start Bootstrap</a>
+          </div>
+        </div>
+
+        <!-- Blog Post -->
+        <div class="card mb-4 border">
+          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+          <div class="card-body">
+            <h2 class="card-title">Post Title</h2>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+            <a href="#" class="btn btn-primary">Read More →</a>
+          </div>
+          <div class="card-footer text-muted">
+            Posted on January 1, 2020 by
+            <a href="#">Start Bootstrap</a>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+          <li class="page-item">
+            <a class="page-link" href="#">← Older</a>
+          </li>
+          <li class="page-item disabled">
+            <a class="page-link" href="#">Newer →</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Blogpost end -->
+
+      <div class="col-md-4">
+      <h2 class="my-4">Categories
+          
+        </h2>
+       <div class="card my-4 border border-info">
+          <h5 class="card-header">Devices</h5>
+          <img style="height: 200px; width: 100%; display: block;" 
+          src="{% static 'img/devices.jpg' %}" alt="Card image">        
+          <div class="card-body p-4">
+            The third device in this ranking is the computer, which has slightly increased its presence compared to last year, from 78.4% to 79.5% of households. On the other hand, the landline is losing ground and currently 75.8% households have it , almost two points less than last year (77.6%).
+          </div>
+          </div>
+          <div class="card my-4 border border-info">
+          <h5 class="card-header">Space</h5>
+          <img style="height: 200px; width: 100%; display: block;" 
+          src="{% static 'img/space.jpg' %}" alt="Card image">
+          <div class="card-body p-4">
+            Space technology is technology developed by space science or the aerospace industry for use in spaceflight, satellites, or space exploration. Space technology includes spacecraft, satellites, space stations, and support infrastructure, equipment, and procedures and space warfare.
+          </div>
+          </div>
+          <div class="card my-4 border border-info">
+          <h5 class="card-header">Internet</h5>
+          <img style="height: 200px; width: 100%; display: block;" 
+          src="{% static 'img/internet.jpg' %}" alt="Card image">
+          <div class="card-body p-4">
+            Computer Internet technology refers to devices, software, hardware and transmission protocols used to connect computers together in order to receive or send data from one computer to another within a small network or as part of a small network within a larger network, such as the Internet.
+          </div>
+        </div>
+        <div class="card my-4 border border-info">
+          <h5 class="card-header">AI</h5>
+          <img style="height: 200px; width: 100%; display: block;" 
+          src="{% static 'img/ai.jpg' %}" alt="Card image">
+          <div class="card-body p-4">
+            Artificial intelligence (AI) refers to the simulation of human intelligence in machines that are programmed to think like humans and mimic their actions. The term may also be applied to any machine that exhibits traits associated with a human mind such as learning and problem-solving.
+          </div>
+      </div>
+       <div class="card my-4 border border-info">
+          <h5 class="card-header">Research</h5>
+          <img style="height: 200px; width: 100%; display: block;" 
+          src="{% static 'img/research.jpg' %}" alt="Card image">
+          <div class="card-body p-4">
+            The digital revolution in education is full steam ahead, and it’s affecting more than just the classroom. Academic research is experiencing a high-tech makeover, as well, and it matters more than most of us know. As is typical in every hype cycle, it’s hard to tell where we are in academia’s digital revolution.
+          </div>
+      </div>
+      </div>
+      </div>
+      </div>
 
 {% endblock body %}
