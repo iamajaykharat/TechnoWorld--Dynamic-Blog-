@@ -31,3 +31,15 @@ def contact(request):
         return redirect('/contact/')
 
     return render(request, 'home/contact.html')
+
+def search(request):
+    query = request.GET['query']
+    if len(query)>120:
+        posts = BlogPost.objects.none()
+    else:
+        postsTitle = BlogPost.objects.filter(title__icontains=query)
+        postsContent = BlogPost.objects.filter(content__icontains=query)
+        postsContent1 = BlogPost.objects.filter(content1__icontains=query)
+        posts1 = postsTitle.union(postsContent)
+        posts = postsContent1.union(posts1)
+    return render(request,'home/search.html',{'posts':posts,'query': query})

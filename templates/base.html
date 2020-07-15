@@ -38,9 +38,18 @@
       margin: 5px 2px;
     }
 
-      {% block css %}
+    .btn1 {
+      padding: 0.375rem 2.75rem;
+      font-size: 20px;
+    }
 
-      {% endblock css %}
+      {
+      % block css %
+    }
+
+      {
+      % endblock css %
+    }
   </style>
   <title>{% block title %} {% endblock title %}</title>
 </head>
@@ -80,14 +89,109 @@
         </ul>
 
       </div>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      <form method="get" action="/search/" class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" name="query" id="query" type="text" placeholder="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
+      <!-- login modal -->
+      <button type="button" class="btn btn-secondary my-2 ml-2 my-sm-0" data-toggle="modal" data-target="#loginModal">
+        Login
+      </button>
+      <!-- signup modal -->
+      <button type="button" class="btn btn-secondary my-2 ml-2 my-sm-0" data-toggle="modal" data-target="#signupModal">
+        Join
+      </button>
+
     </div>
   </div>
 
   {% block body %} {% endblock body %}
+  <!-- Modal signup -->
+  <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title text-success text-center" id="exampleModalLabel">Join Us Now</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <form>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="firstname">First Name</label>
+                <input type="text" name="first_name" class="form-control" id="firstname">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="lastname">Last Name</label>
+                <input type="text" name="last_name" class="form-control" id="lastname">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" name="username" class="form-control" id="username">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" name="email" class="form-control" id="email">
+            </div>
+            <div class="form-group">
+              <label for="pass1">Password</label>
+              <input type="password" name="password1" class="form-control" id="pass1">
+            </div>
+            <div class="form-group">
+              <label for="pass2">Confirm Password</label>
+              <input type="password" name="password2" class="form-control" id="pass2">
+            </div>
+            <div class="modal-footer justify-content-center">
+              <button type="submit" class="btn btn-outline-success btn1">Join</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Modal login -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title text-success text-center" id="exampleModalLabel1">Login Here</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="username1">Username</label>
+              <input type="text" name="username" class="form-control" id="username1">
+            </div>
+
+            <div class="form-group">
+              <label for="pass12">Password</label>
+              <input type="password" name="password" class="form-control" id="pass12">
+            </div>
+
+            <div class="modal-footer justify-content-center">
+              <button type="submit" class="btn btn-outline-success btn1">Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 
   <footer class="container-fluid bg-primary my-0 py-3">
     <p class="mb-0 text-center">© 2020-2021 TechnoWorld</p>
@@ -110,6 +214,27 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"></script>
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+      'use strict';
+      window.addEventListener('load', function () {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+  </script>
+
 </body>
 
 </html>
