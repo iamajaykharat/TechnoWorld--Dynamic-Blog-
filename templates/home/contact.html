@@ -1,154 +1,155 @@
 {% extends 'base.html' %}
+{% block contactactive %}active{% endblock contactactive %}
 {% block title %} Contact {% endblock title %}
 
 {% block css %}
-    {% comment %} footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: red;
-    color: white;
-    text-align: center;
-      }  {% endcomment %}
+{% comment %} footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: red;
+color: white;
+text-align: center;
+} {% endcomment %}
 {% endblock css %}
 
 
 {% block body %}
 <div class="container mar">
 
-{% if messages %}
-{% for mg in messages %}
-<div class="container">
-<div class="row align-items-center h-100">
-<div class="col-12 mx-auto">
-<div class="jumbotron border border-success text-center pt-5">
-  <h3 class="display-3">Successfully Submited!</h3>
-  <h6 class="lead">{{mg}}</6>
-  <p class="lead my-5">
-    <a class="btn btn-success btn-lg" href="/" role="button">Back to Home</a>
-  </p>
-</div>
-</div>
-</div>
-</div>
-{% endfor %}
-
-{% else %}
-
-<div class="my-4 p-3 text-center border border-success">
-  <h2>Contact Us</h2>
-</div>
-<form class="needs-validation" action="/contact/" method="post" novalidate> {% csrf_token %}
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="validationCustom01">First name</label>
-      <input type="text" name="firstname" class="form-control" id="validationCustom01" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        Please provide a valid Name.
-      </div>
-    </div>
-    <div class="col-md-6 mb-3">
-      <label for="validationCustom02">Last name</label>
-      <input type="text" name="lastname" class="form-control" id="validationCustom02" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        Please provide a valid Name.
+  {% if messages %}
+  {% for mg in messages %}
+  <div class="container">
+    <div class="row align-items-center h-100">
+      <div class="col-12 mx-auto">
+        <div class="jumbotron border border-success text-center pt-5">
+          <h3 class="display-3 mt-3">Successfully Submited!</h3>
+          <h6 class="lead">{{mg}}</6>
+            <p class="lead my-5">
+              <a class="btn btn-success btn-lg" href="/" role="button">Back to Home</a>
+            </p>
+        </div>
       </div>
     </div>
   </div>
-  <div class="form-row">
-    <div class="col-md-12 mb-3">
-      <label for="validationCustom07">Email</label>
-      <input type="email" name="email" class="form-control" id="validationCustom07" required>
-      <div class="valid-feedback">
-        Looks good!
+  {% endfor %}
+
+  {% else %}
+
+  <div class="my-4 p-3 text-center border border-success">
+    <h2>Contact Us</h2>
+  </div>
+  <form class="needs-validation" action="/contact/" method="post" novalidate> {% csrf_token %}
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="validationCustom01">First name</label>
+        <input type="text" name="firstname" class="form-control" id="validationCustom01" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Please provide a valid Name.
+        </div>
       </div>
-      <div class="invalid-feedback">
-        Please provide a valid Email.
+      <div class="col-md-6 mb-3">
+        <label for="validationCustom02">Last name</label>
+        <input type="text" name="lastname" class="form-control" id="validationCustom02" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Please provide a valid Name.
+        </div>
       </div>
-    </div>
     </div>
     <div class="form-row">
-    <div class="col-md-12 mb-3">
-      <label for="validationCustom08">Locality</label>
-      <input type="text" name="address" class="form-control" id="validationCustom08" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        Please provide a valid Location.
-      </div>
-    </div>
-    </div>
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="validationCustom03">City</label>
-      <input type="text" name="city" class="form-control" id="validationCustom03" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        Please provide a valid City.
+      <div class="col-md-12 mb-3">
+        <label for="validationCustom07">Email</label>
+        <input type="email" name="email" class="form-control" id="validationCustom07" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Please provide a valid Email.
+        </div>
       </div>
     </div>
-    <div class="col-md-6 mb-3">
-      <label for="validationCustom06">State</label>
-      <input type="text" name="state" class="form-control" id="validationCustom06" required>      
-      </select>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        Please select a valid State.
-      </div>
-    </div> 
-  </div>
-  <div class="form-row">
-    <div class="col-md-12 mb-3">
-      <label for="validationCustom09">Query/Feedback</label>
-      <textarea type="text" name="msg" class="form-control" id="validationCustom09" required></textarea>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-      <div class="invalid-feedback">
-        Please provide a Feedback/Query.
+    <div class="form-row">
+      <div class="col-md-12 mb-3">
+        <label for="validationCustom08">Locality</label>
+        <input type="text" name="address" class="form-control" id="validationCustom08" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Please provide a valid Location.
+        </div>
       </div>
     </div>
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="validationCustom03">City</label>
+        <input type="text" name="city" class="form-control" id="validationCustom03" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Please provide a valid City.
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="validationCustom06">State</label>
+        <input type="text" name="state" class="form-control" id="validationCustom06" required>
+        </select>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Please select a valid State.
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-12 mb-3">
+        <label for="validationCustom09">Query/Feedback</label>
+        <textarea type="text" name="msg" class="form-control" id="validationCustom09" required></textarea>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Please provide a Feedback/Query.
+        </div>
+      </div>
     </div>
     <fieldset class="form-group">
       <label for="customRange1">Rate Us</label>
       <input type="range" name="rating" class="custom-range" id="customRange1">
-    </fieldset> 
-  <button class="btn btn-outline-success btn-lg btn-block" type="submit">Submit</button>
-</form>
-{% endif %}
+    </fieldset>
+    <button class="btn btn-outline-success btn-lg btn-block" type="submit">Submit</button>
+  </form>
+  {% endif %}
 </div>
 
 <script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function () {
+    'use strict';
+    window.addEventListener('load', function () {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function (form) {
+        form.addEventListener('submit', function (event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
 </script>
 
 {% endblock body %}

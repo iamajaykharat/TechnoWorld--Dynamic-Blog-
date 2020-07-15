@@ -1,83 +1,95 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
 
-    <!-- Bootstrap CSS-->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- Style CSS-->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+  <!-- Bootstrap CSS-->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
 
-    <style>
-    body{
+  <!-- Style CSS-->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+
+  <style>
+    body {
       font-family: 'Acme', sans-serif;
     }
-    .mar{
-          margin-top:7rem;
-          margin-bottom:4rem;
-        }
-    .fa {
-    padding: 20px;
-    font-size: 30px;
-    width: 70px;
-    border-radius: 50%;
-    text-decoration: none;
-    margin: 5px 2px;
+
+    .mar {
+      margin-top: 7rem;
+      margin-bottom: 4rem;
     }
-    
-    {% block css %} {% endblock css %}
-    </style>
-    <title>{% block title %} {% endblock title %}</title>
+
+    .fa {
+      padding: 20px;
+      font-size: 30px;
+      width: 70px;
+      border-radius: 50%;
+      text-decoration: none;
+      margin: 5px 2px;
+    }
+
+      {% block css %}
+
+      {% endblock css %}
+  </style>
+  <title>{% block title %} {% endblock title %}</title>
 </head>
+
 <body>
-      <!-- Navbar-->
-    <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
-      <div class="container">
-        <a href="/" class="navbar-brand">TechnoWorld</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav px-2">
-            
-            <li class="nav-item active px-2">
-        <a class="nav-link " href="/">Home<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item px-2">
-        <a class="nav-link " href="/about">About</a>
-      </li>
-      <li class="nav-item px-2">
-        <a class="nav-link " href="/blog">Blog</a>
-      </li>
-      <li class="nav-item px-2">
-        <a class="nav-link " href="#">More</a>
-      </li>
-      <li class="nav-item px-2">
-        <a class="nav-link " href="/contact">Contact</a>
-      </li>
-          </ul>
-          
-        </div>
-        <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                  </form>
+  <!-- Navbar-->
+  <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+    <div class="container">
+      <a href="/" class="navbar-brand">TechnoWorld</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav px-2">
+
+          <li class="nav-item px-2 {% block homeactive %}
+          {% endblock homeactive %}">
+            <a class="nav-link " href="/">Home<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item px-2 {% block aboutactive %}
+          {% endblock aboutactive %}">
+            <a class="nav-link " href="/about">About</a>
+          </li>
+          <li class="nav-item px-2 {% block blogactive %}
+          {% endblock blogactive %}">
+            <a class="nav-link " href="/blog">Blog</a>
+          </li>
+          <li class="nav-item px-2 {% block moreactive %}
+          {% endblock moreactive %}">
+            <a class="nav-link " href="#">More</a>
+          </li>
+          <li class="nav-item px-2 {% block contactactive %}
+          {% endblock contactactive %}">
+            <a class="nav-link " href="/contact">Contact</a>
+          </li>
+        </ul>
+
       </div>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
     </div>
+  </div>
 
-    {% block body %} {% endblock body %}
+  {% block body %} {% endblock body %}
 
-    <footer class="container-fluid bg-primary my-0 py-3">
+  <footer class="container-fluid bg-primary my-0 py-3">
     <p class="mb-0 text-center">© 2020-2021 TechnoWorld</p>
     <p class="mb-0 text-center">
       <a href="#">Made By Ajay Kharat |</a>
@@ -86,11 +98,18 @@
     </p>
   </footer>
 
-    {% block js %} {% endblock js %}
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-  </body>
+  {% block js %} {% endblock js %}
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
