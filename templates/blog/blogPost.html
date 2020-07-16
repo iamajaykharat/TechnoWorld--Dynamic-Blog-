@@ -35,18 +35,22 @@
       <p class="lead" style="text-indent:50px;">{{post.content}}</p>
       <hr>
       <p class="lead" style="text-indent:50px;">{{post.content1}}</p>
-      {% endfor %}
+      
       <hr>
 
       <!-- Comments Form -->
       <div class="card my-4">
         <h5 class="card-header">Leave a Comment:</h5>
         <div class="card-body">
-          <form>
+        
+          <form action="/blog/postComment/" method="post">
+          {% csrf_token %}
             <div class="form-group">
-              <textarea class="form-control" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+              <textarea class="form-control" name="comment" rows="3"></textarea>
+              </div>
+              <input type="hidden" name="postId" value="{{post.post_id}}">
+            
+            <button type="submit" class="btn btn-success">Submit</button>
           </form>
         </div>
       </div>
@@ -96,7 +100,7 @@
 
     </div>
 
-
+{% endfor %}
     <div class="col-md-4 mt-2">
       <h2 class="my-4 border border-info p-3">Categories
       </h2>
