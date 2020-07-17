@@ -16,7 +16,7 @@ class BlogPostAdmin(admin.ModelAdmin):
 
 @admin.register(BlogComment)
 class BlogCommentAdmin(admin.ModelAdmin):
-    list_display = ('comment_mod', 'user', 'timestamp')
+    list_display = ('comment_mod', 'user','post', 'timestamp')
     ordering = ('comment',)
     search_fields = ('user', 'comment')
 

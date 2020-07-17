@@ -32,7 +32,7 @@ height: 400px;
       <div class="card mb-4 border">
         <img class="card-img-top" src="/media/{{post.img}}" alt="Card image cap">
         <div class="card-body">
-          <h2 class="card-title">{{post.title}}</h2>
+        <h2 class="card-title"><a href="{{post.slug}}">{{post.title}}</a></h2>
           <p class="card-text">{{post.content|truncatechars:500}}</p>
           <a href="{{post.slug}}" class="btn btn-primary">Read More →</a>
         </div>

@@ -29,4 +29,7 @@ class BlogComment(models.Model):
     return self.comment[:20] + "..."
   comment_mod.short_description = 'Comments'
 
+  def __str__(self):
+      return self.comment[:20] + "..."
+
   
