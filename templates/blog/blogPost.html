@@ -4,52 +4,57 @@
 {% block css %}
 
 .commentdate{
-  margin-left: 416px;
-  font-size: 17px;
+margin-left: 415px;
+font-size: 17px;
 }
 
 .replydate{
-  margin-left: 340px;
-  font-size: 17px;
+margin-left: 335px;
+font-size: 17px;
 }
 
 .loginbtn{
-  padding-left:17px;
-  padding-right:17px;
+padding-left:17px;
+padding-right:17px;
 }
 
 .replybtn1{
-    margin-left: 530px;
-    padding: 2px 15px 2px 15px;
-    margin-top: -27px;
+margin-left: 530px;
+padding: 2px 15px 2px 15px;
+margin-top: -27px;
 }
 .replybox{
-    margin: 5px 0px 5px 88px;
-    height: 145px;
+margin: 5px 0px 5px 88px;
+height: 145px;
 }
 .replybtn{
-  padding:1px 10px;
+padding:1px 10px;
 }
 
 .replycard{
-  margin-left:88px;
-  height:140px;
+margin-left:88px;
+height:140px;
 }
 .commentcard{
-  height:175px;
+height:175px;
 }
 
 {% endblock css %}
 
 {% block body %}
+
 {% load static %}
 {% load humanize %}
 {% load extras %}
+
+<!-- Facebook like share plugin-->
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0" nonce="VAh7wMZ3"></script>
+
 <div class="container mar">
 
   <div class="row">
     <div class="col-lg-8">
-      
+
       <!-- Title -->
       <h1 class="mt-4">{{post.title}}</h1>
 
@@ -62,7 +67,10 @@
 
       <!-- Date/Time -->
       <p>Posted on {{post.date}}</p>
-
+      <div>
+      <h5 style="display:inline; font-size:17px;"><span style="font-weight:450; background-color:#1877f2; padding:4px 8px 4px 8px; margin-right:2px;" class="badge badge-primary">Views : {{post.views}}</span></h5>
+      <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="button" data-action="like" data-size="small" data-share="true"></div>   
+      </div>
       <hr>
 
       <!-- Preview Image -->
@@ -71,9 +79,9 @@
       <hr>
 
       <!-- Post Content -->
-      <p class="lead" style="text-indent:50px;">{{post.content}}</p>
+      <div class="lead" style="text-indent:50px;">{{post.content|safe}}</div>
       <hr>
-      <p class="lead" style="text-indent:50px;">{{post.content1}}</p>
+      <div class="lead" style="text-indent:50px;">{{post.content1|safe}}</div>
 
       <hr>
 
@@ -100,11 +108,13 @@
           {% else %}
           <h4 class="text-center">Please Login to Post a Comment</h4>
           <div class="text-center pt-2">
-          <button type="button" class="btn btn-primary loginbtn" data-toggle="modal" data-target="#loginModal">
-            Login
+            <button type="button" class="btn btn-primary loginbtn" data-toggle="modal" data-target="#loginModal">
+              Login
             </button>
             <div class="mt-3">
-            <h6> Don't have an account?  <a href="#signupModal" data-toggle="modal" data-target="#signupModal">Create one here</a></h6></div>
+              <h6> Don't have an account? <a href="#signupModal" data-toggle="modal" data-target="#signupModal">Create
+                  one here</a></h6>
+            </div>
           </div>
           {% endif %}
         </div>
@@ -133,39 +143,42 @@
       </div>
       {% endif %}
       {% endfor %}
-      
 
-      <!-- Single Comment -->
+
+      <!-- Showing main comment -->
       {% for comment in comments reversed %}
-      
+
       <div class="card my-2 mx-0 rounded commentcard">
-      <div class="media p-3">
-        <img class="d-flex mr-3 rounded-circle border border-info" style="height:60px; width:60px;" src="{% static 'img/user.jpg' %}" alt="user-img">
-        <div class="media-body">
-        <div class="card-header">
-        <h4 style="display:inline-block;">{{comment.user.username}}</h4>
-        <span class="text-muted commentdate">{{comment.timestamp|naturaltime}}</span>
-        </div>
-        <div class="card-body">
-          <h5>{{comment.comment}}</h5>
+        <div class="media p-3">
+          <img class="d-flex mr-3 rounded-circle border border-info" style="height:60px; width:60px;"
+            src="{% static 'img/user.jpg' %}" alt="user-img">
+          <div class="media-body">
+            <div class="card-header">
+              <h4 style="display:inline-block;">{{comment.user.username}}</h4>
+              <span class="text-muted commentdate">{{comment.timestamp|naturaltime}}</span>
+            </div>
+            <div class="card-body">
+              <h5>{{comment.comment}}</h5>
+            </div>
+            <button class="btn btn-primary replybtn1" type="button" data-toggle="collapse"
+              data-target="#reply{{comment.comment_id}}" aria-expanded="false"
+              aria-controls="reply{{comment.comment_id}}">
+              Reply
+            </button>
           </div>
-          <button class="btn btn-primary replybtn1" type="button" data-toggle="collapse" data-target="#reply{{comment.comment_id}}" aria-expanded="false" aria-controls="reply{{comment.comment_id}}">
-          Reply
-          </button>
         </div>
       </div>
-      </div> 
 
 
-
+      <!-- Reply to comment form -->
       <div class="collapse mx-0" id="reply{{comment.comment_id}}">
-      <div class="card card-body rounded replybox">
+        <div class="card card-body rounded replybox">
           {% if user.is_authenticated %}
           <form action="/blog/postComment/" class="needs-validation" method="post" novalidate>
             {% csrf_token %}
             <div class="form-group">
-            <div>
-              <textarea class="form-control" name="comment" rows="2" required></textarea>
+              <div>
+                <textarea class="form-control" name="comment" rows="2" required></textarea>
               </div>
               <div class="valid-feedback pt-1">
                 <h6>Looks good!</h6>
@@ -181,39 +194,43 @@
           {% else %}
           <h4 class="text-center">Please Login to Reply on Comment</h4>
           <div class="text-center pt-2">
-          <button type="button" class="btn btn-primary loginbtn" data-toggle="modal" data-target="#loginModal">
-            Login
+            <button type="button" class="btn btn-primary loginbtn" data-toggle="modal" data-target="#loginModal">
+              Login
             </button>
             <div class="mt-3">
-            <h6> Don't have an account?  <a href="#signupModal" data-toggle="modal" data-target="#signupModal">Create one here</a></h6></div>
+              <h6> Don't have an account? <a href="#signupModal" data-toggle="modal" data-target="#signupModal">Create
+                  one here</a></h6>
+            </div>
           </div>
           {% endif %}
         </div>
-        </div>
+      </div>
 
 
 
-
-        {% for reply in replyDict|get_val:comment.comment_id %}
-        <div class="card my-1 rounded replycard">
-      <div class="media p-3">
-        <img class="d-flex mr-3 rounded-circle" style="height:50px; width:50px;" src="{% static 'img/user.jpg' %}" alt="user-img">
-        <div class="media-body">
-        <div class="card-header">
-        <h4 style="display:inline-block;">{{comment.user.username}}</h4>
-        <span class="text-muted replydate">{{comment.timestamp|naturaltime}}</span>
-        </div>
-        <div class="card-body">
-          <h5>{{reply}}</h5>
+      <!-- Showing reply of corresponding comment -->
+      {% for reply in replyDict|get_val:comment.comment_id %}
+      <div class="card my-1 rounded replycard">
+        <div class="media p-3">
+          <img class="d-flex mr-3 rounded-circle" style="height:50px; width:50px;" src="{% static 'img/user.jpg' %}"
+            alt="user-img">
+          <div class="media-body">
+            <div class="card-header">
+              <h4 style="display:inline-block;">{{reply.user.username}}</h4>
+              <span class="text-muted replydate">{{reply.timestamp|naturaltime}}</span>
+            </div>
+            <div class="card-body">
+              <h5>{{reply.comment}}</h5>
+            </div>
           </div>
         </div>
       </div>
-      </div> 
       {% endfor %}
       {% endfor %}
     </div>
 
-    
+
+    <!-- Sidebar of Categories -->
     <div class="col-md-4 mt-2">
       <h2 class="my-4 border border-info p-3">Categories
       </h2>

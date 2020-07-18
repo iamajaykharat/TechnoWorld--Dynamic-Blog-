@@ -33,12 +33,13 @@ height: 400px;
         <img class="card-img-top" src="/media/{{post.img}}" alt="Card image cap">
         <div class="card-body">
         <h2 class="card-title"><a href="{{post.slug}}">{{post.title}}</a></h2>
-          <p class="card-text">{{post.content|truncatechars:500}}</p>
+          <p class="card-text"><div class="preview">{{post.content|truncatechars:500|safe}}</div></p>
           <a href="{{post.slug}}" class="btn btn-primary">Read More →</a>
         </div>
         <div class="card-footer text-muted">
           Posted on {{post.date}} by
           <a href="#">{{post.author}}</a>
+          (Views : {{post.views}})
         </div>
       </div>
 

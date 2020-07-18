@@ -12,6 +12,7 @@ class BlogPost(models.Model):
   author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
   date = models.DateField('Publish Date')
   slug = models.CharField('Slug for URL',max_length=200)
+  views = models.IntegerField('Post Views',default=0)
   img = models.ImageField(upload_to='media/img',default="")
 
   def __str__(self):
