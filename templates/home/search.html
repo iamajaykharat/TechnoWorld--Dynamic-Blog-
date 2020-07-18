@@ -23,7 +23,7 @@
           <strong class="d-inline-block mb-2 text-primary">Article by {{post.author}}</strong>
           <h2 class="mb-0">{{post.title}}</h2>
           <div class="mb-1 text-muted">{{post.date}}</div>
-          <p class="card-text mb-auto">{{post.content|truncatechars:500}}</p>
+          <p class="card-text mb-auto"><div class="preview">{{post.content|truncatechars:500|safe}}</div></p>
           <a onclick="window.location.href='/blog/{{post.slug}}'" class="stretched-link text-success" style="cursor: pointer;">Explore</a>
           
         </div>
